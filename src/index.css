@@ -1,0 +1,113 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Fator Essencial Design System - Premium Dark Tech Aesthetic */
+    
+    /* Base Colors - Dark Tech Theme */
+    --background: 180 45% 8%;  /* #172626 - Dark teal sophistication */
+    --background-alt: 180 50% 6%;  /* #111E1E - Almost black green depth */
+    --foreground: 0 0% 100%;  /* Pure white text */
+    --foreground-secondary: 0 0% 80%;  /* #CCCCCC - Light gray secondary text */
+
+    /* Brand Colors */
+    --primary: 180 45% 8%;  /* #172626 - Dark teal */
+    --primary-foreground: 0 0% 100%;
+    
+    --accent: 42 87% 57%;  /* #F2B02F - Vibrant gold transformation */
+    --accent-foreground: 180 45% 8%;
+    
+    --tech-glow: 163 100% 62%;  /* #3AFFBD - Neon green tech highlights */
+    
+    /* UI Elements */
+    --card: 180 45% 10%;
+    --card-foreground: 0 0% 100%;
+    
+    --muted: 180 40% 15%;
+    --muted-foreground: 0 0% 70%;
+    
+    --border: 180 30% 20%;
+    --input: 180 30% 20%;
+    --ring: 42 87% 57%;
+    
+    /* Premium Effects */
+    --glass-bg: 0 0% 100% / 0.05;
+    --glass-border: 0 0% 100% / 0.1;
+    
+    --radius: 0.75rem;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(180 45% 8%) 0%, hsl(180 50% 6%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(42 87% 57%) 0%, hsl(163 100% 62%) 100%);
+    --gradient-radial: radial-gradient(circle at center, hsl(180 45% 12%) 0%, hsl(180 50% 6%) 100%);
+    
+    /* Shadows */
+    --shadow-premium: 0 8px 32px rgba(0, 0, 0, 0.4);
+    --shadow-glow-accent: 0 0 20px rgba(242, 176, 47, 0.3), 0 0 40px rgba(242, 176, 47, 0.2);
+    --shadow-glow-tech: 0 0 20px rgba(58, 255, 189, 0.3);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    background: hsl(var(--background));
+  }
+  
+  /* Premium Glassmorphism Utilities */
+  .glass-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: var(--shadow-premium);
+  }
+  
+  .glass-border {
+    border: 1px solid rgba(255, 255, 255, 0.15);
+  }
+  
+  /* Grid Pattern Background (Matrix Style) */
+  .grid-pattern {
+    background-image: 
+      linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+  
+  /* Glow Effects */
+  .glow-accent {
+    box-shadow: var(--shadow-glow-accent);
+  }
+  
+  .glow-tech {
+    box-shadow: var(--shadow-glow-tech);
+  }
+  
+  /* Text Gradients */
+  .text-gradient-accent {
+    background: linear-gradient(135deg, hsl(42 87% 57%), hsl(163 100% 62%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
