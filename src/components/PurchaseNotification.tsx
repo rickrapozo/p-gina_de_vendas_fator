@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { GlassCard } from './GlassCard';
 import { CheckCircle, X } from 'lucide-react';
 
@@ -36,7 +36,8 @@ export const PurchaseNotification = ({ onCounterUpdate, currentCount }: Purchase
   const [isClosing, setIsClosing] = useState(false);
   const [notificationCount, setNotificationCount] = useState(0); // Contador de notificações mostradas
   const [usedNames, setUsedNames] = useState<string[]>([]); // Nomes já utilizados
-  const [timers, setTimers] = useState<NodeJS.Timeout[]>([]); // Controle de timers
+  const timersRef = useRef<NodeJS.Timeout[]>([]); // Controle de timers usando ref
+  const hideTimerRef = useRef<NodeJS.Timeout | null>(null); // Timer específico para fechamento
   const maxNotifications = 4; // Limite máximo de notificações por sessão
 
   const getRandomName = () => {
@@ -64,6 +65,12 @@ export const PurchaseNotification = ({ onCounterUpdate, currentCount }: Purchase
     // Para de mostrar notificações se não há mais vagas ou se atingiu o limite
     if (notificationCount >= maxNotifications || currentCount <= 0) return;
     
+    // Limpa o timer anterior se existir
+    if (hideTimerRef.current) {
+      clearTimeout(hideTimerRef.current);
+      hideTimerRef.current = null;
+    }
+    
     const newName = getRandomName();
     setCurrentName(newName);
     setIsVisible(true);
@@ -74,16 +81,14 @@ export const PurchaseNotification = ({ onCounterUpdate, currentCount }: Purchase
     onCounterUpdate(prev => prev - 1);
     
     // Esconde após 6 segundos
-    const hideTimer = setTimeout(() => {
+    hideTimerRef.current = setTimeout(() => {
       setIsClosing(true);
-      const removeTimer = setTimeout(() => {
+      // Após a animação de fechamento (300ms), esconde completamente
+      setTimeout(() => {
         setIsVisible(false);
-      }, 300); // Tempo da animação de saída
-      
-      setTimers(prev => prev.filter(timer => timer !== hideTimer));
+        hideTimerRef.current = null;
+      }, 300);
     }, 6000);
-    
-    setTimers(prev => [...prev, hideTimer]);
   };
 
   const scheduleNextNotification = () => {
@@ -100,37 +105,57 @@ export const PurchaseNotification = ({ onCounterUpdate, currentCount }: Purchase
       scheduleNextNotification(); // Agenda a próxima apenas se não atingiu o limite
     }, randomDelay);
     
-    setTimers(prev => [...prev, nextTimer]);
+    timersRef.current.push(nextTimer);
   };
 
   useEffect(() => {
-    // Limpa todos os timers existentes
-    timers.forEach(timer => clearTimeout(timer));
-    setTimers([]);
-    
+    // Limpa todos os timers existentes ao iniciar (evita duplicidade)
+    timersRef.current.forEach(timer => clearTimeout(timer));
+    timersRef.current = [];
+
     // Se não há vagas, não inicia as notificações
     if (currentCount <= 0) return;
-    
+
     // Primeira notificação aparece mais rapidamente (15 segundos)
     const initialTimer = setTimeout(() => {
       showNotification();
       scheduleNextNotification(); // Inicia o ciclo de notificações
     }, 15000); // 15 segundos para a primeira notificação
 
-    setTimers([initialTimer]);
+    timersRef.current.push(initialTimer);
 
     return () => {
-      // Limpa todos os timers ao desmontar o componente
-      timers.forEach(timer => clearTimeout(timer));
-      clearTimeout(initialTimer);
+      // Limpa todos os timers de agendamento ao desmontar
+      timersRef.current.forEach(timer => clearTimeout(timer));
+      timersRef.current = [];
+      // Não limpamos o hideTimerRef aqui por dependências, pois isso faria o cartão
+      // aberto parar de fechar. Ele é limpo no unmount pela limpeza geral abaixo.
     };
-  }, [currentCount]); // Adiciona currentCount como dependência para reagir a mudanças
+  }, []);
+
+  // Limpeza geral ao desmontar para evitar setState em componente desmontado
+  useEffect(() => {
+    return () => {
+      timersRef.current.forEach(timer => clearTimeout(timer));
+      timersRef.current = [];
+      if (hideTimerRef.current) {
+        clearTimeout(hideTimerRef.current);
+        hideTimerRef.current = null;
+      }
+    };
+  }, []);
 
   const handleClose = () => {
+    // Limpa o timer de fechamento automático se existir
+    if (hideTimerRef.current) {
+      clearTimeout(hideTimerRef.current);
+      hideTimerRef.current = null;
+    }
+    
     setIsClosing(true);
     setTimeout(() => {
       setIsVisible(false);
-    }, 300);
+    }, 300); // Tempo da animação de saída
   };
 
   if (!isVisible) return null;

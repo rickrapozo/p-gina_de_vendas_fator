@@ -8,21 +8,22 @@ export const ProductSection = () => {
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             {/* Video */}
-            <div className="animate-fade-in order-2 md:order-1">
+            <div className="animate-fade-in order-2 md:order-1 flex justify-center">
               <div className="relative">
                 {/* Glow Effect */}
                 <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-tech-glow/20 blur-3xl rounded-full" />
                 
                 {/* Video Container */}
-                <div className="relative glass-card p-8 rounded-3xl shadow-2xl">
-                  <div className="aspect-[9/16] bg-gradient-to-br from-primary to-background-alt rounded-2xl border-4 border-muted/30 overflow-hidden">
+                <div className="relative glass-card p-0 rounded-3xl shadow-2xl flex justify-center items-center mx-auto">
+                  <div className="aspect-[9/16] bg-gradient-to-br from-primary to-background-alt rounded-2xl border-0 overflow-hidden mx-auto">
                     <iframe
-                      src="https://www.youtube.com/embed/mA8RzKwjdJU"
-                      title="YouTube video player"
+                      src="https://drive.google.com/file/d/10dASLCj1iupsvYE0k3olDUDzYOLx0Yqy/preview"
+                      width="640"
+                      height="480"
+                      allow="autoplay"
                       className="w-full h-full"
-                      frameBorder="0"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                       allowFullScreen
+                      title="Do Subconsciente à Prosperidade Real"
                     />
                   </div>
                 </div>
