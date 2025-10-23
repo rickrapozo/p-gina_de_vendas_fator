@@ -32,7 +32,7 @@ export const HeroSection = () => {
             <div className="relative aspect-video rounded-2xl overflow-hidden glass-card group cursor-pointer shadow-2xl hover:shadow-accent/20 transition-all duration-300">
               {/* Video Embed */}
               <iframe 
-                src="https://drive.google.com/file/d/1bv8lsqIn8WR1wsWta9hZ_eQA8_BInB2A/preview" 
+                src="https://drive.google.com/file/d/1lLuNk2EuDyVFwc2iKLJ9_iMn4slFjprJ/preview" 
                 className="w-full h-full"
                 allow="autoplay"
                 allowFullScreen

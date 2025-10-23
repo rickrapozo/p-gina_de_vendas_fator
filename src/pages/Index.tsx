@@ -14,7 +14,7 @@ import { PurchaseNotification } from "@/components/PurchaseNotification";
 import { UrgentBanner } from "@/components/UrgentBanner";
 
 const Index = () => {
-  const [availableSpots, setAvailableSpots] = useState(42);
+  const [availableSpots, setAvailableSpots] = useState(52);
 
   const handleCounterUpdate = (updateFn: (prev: number) => number) => {
     setAvailableSpots(prev => Math.max(0, updateFn(prev)));
@@ -23,10 +23,10 @@ const Index = () => {
   return (
     <main className="min-h-screen bg-background text-foreground">
       <UrgentBanner 
-        message="AVISO: O que você vai descobrir nos próximos 2 minutos pode causar uma falha na sua percepção da realidade."
+        message="AVISO: O que você vai descobrir nos próximos 2 minutos pode causar uma falha na sua percepção da realidade. Essa Página Sairá do AR a Qualquer Momento.. "
         className="fixed top-0 left-0 right-0 z-50"
       />
-      <div className="pt-1">
+      <div className="pt-0">
         <HeroSection />
         <StorySection />
         <EnemySection />

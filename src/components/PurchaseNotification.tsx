@@ -95,9 +95,9 @@ export const PurchaseNotification = ({ onCounterUpdate, currentCount }: Purchase
     // Verifica se já atingiu o limite de notificações ou se não há mais vagas
     if (notificationCount >= maxNotifications || currentCount <= 0) return;
     
-    // Intervalos reduzidos: entre 20 e 45 segundos
-    const minDelay = 20000; // 20 segundos (mínimo)
-    const maxDelay = 45000; // 45 segundos (máximo)
+    // Intervalos ajustados: entre 47 segundos e 2 minutos
+    const minDelay = 47000; // 47 segundos (mínimo)
+    const maxDelay = 120000; // 2 minutos (máximo)
     const randomDelay = Math.random() * (maxDelay - minDelay) + minDelay;
     
     const nextTimer = setTimeout(() => {
@@ -116,11 +116,11 @@ export const PurchaseNotification = ({ onCounterUpdate, currentCount }: Purchase
     // Se não há vagas, não inicia as notificações
     if (currentCount <= 0) return;
 
-    // Primeira notificação aparece mais rapidamente (15 segundos)
+    // Primeira notificação aparece após 2 minutos (120 segundos)
     const initialTimer = setTimeout(() => {
       showNotification();
       scheduleNextNotification(); // Inicia o ciclo de notificações
-    }, 15000); // 15 segundos para a primeira notificação
+    }, 120000); // 2 minutos para a primeira notificação
 
     timersRef.current.push(initialTimer);
 
@@ -192,20 +192,10 @@ export const PurchaseNotification = ({ onCounterUpdate, currentCount }: Purchase
         {/* Barra de progresso */}
         <div className="h-1 bg-muted/20 overflow-hidden">
           <div 
-            className="h-full bg-green-400 animate-pulse"
-            style={{
-              animation: 'shrink 6s linear forwards'
-            }}
+            className="h-full bg-green-400 animate-pulse shrink-animation"
           />
         </div>
       </GlassCard>
-      
-      <style jsx>{`
-        @keyframes shrink {
-          from { width: 100%; }
-          to { width: 0%; }
-        }
-      `}</style>
     </div>
   );
 };

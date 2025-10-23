@@ -15,7 +15,7 @@ const benefits = [
   "Suporte prioritário",
 ];
 
-export const PricingSection = ({ availableSpots = 42 }: PricingSectionProps) => {
+export const PricingSection = ({ availableSpots = 52 }: PricingSectionProps) => {
   const scrollToBottom = () => {
     window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
   };

@@ -3,35 +3,34 @@ import { Star } from "lucide-react";
 interface Testimonial {
   name: string;
   role: string;
-  content: string;
+  videoUrl: string;
   rating: number;
-  image?: string;
 }
 
 const testimonials: Testimonial[] = [
   {
-    name: "Maria Silva",
-    role: "Empreendedora Digital",
-    content: "Em apenas 30 dias usando o Método 5Ps, consegui quebrar padrões de autossabotagem que me limitavam há anos. Meu faturamento triplicou e finalmente me sinto no controle da minha vida.",
+    name: "Ana Silva",
+    role: "Maquiadora Profissional",
+    videoUrl: "https://www.youtube.com/shorts/zVUCn5RXn0U",
     rating: 5
   },
   {
-    name: "Carlos Mendes",
-    role: "Executivo Corporativo",
-    content: "Sempre tive medo de assumir riscos na carreira. Após aplicar as técnicas de reprogramação mental, consegui a promoção que buscava há 3 anos. A mudança foi impressionante!",
+    name: "Fernando Augusto",
+    role: "Vendedor",
+    videoUrl: "https://www.youtube.com/shorts/mZPAgYrpZ3s",
     rating: 5
   },
   {
-    name: "Ana Costa",
-    role: "Coach de Relacionamentos",
-    content: "O Fator Essencial me ajudou a identificar e eliminar crenças limitantes sobre dinheiro que herdei da minha família. Hoje tenho uma relação saudável com a prosperidade.",
+    name: "Felipe Martins",
+    role: "Empreendedor Digital",
+    videoUrl: "https://www.youtube.com/shorts/0okAiLPP7j4",
     rating: 5
   }
 ];
 
 export const TestimonialsSection = () => {
   return (
-    <section className="py-20 bg-gradient-to-b from-background to-background-alt">
+    <section className="py-20 bg-gradient-to-b from-background to-background-alt min-h-screen flex flex-col justify-center">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
@@ -42,43 +41,56 @@ export const TestimonialsSection = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {testimonials.map((testimonial, index) => (
-            <div 
-              key={index}
-              className="glass-card p-6 rounded-2xl hover:scale-105 transition-all duration-300 animate-fade-in-up"
-              style={{ animationDelay: `${index * 0.2}s` }}
-            >
-              {/* Rating Stars */}
-              <div className="flex mb-4">
-                {[...Array(testimonial.rating)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 text-accent fill-accent" />
-                ))}
-              </div>
+        <div className="flex justify-center items-center">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 max-w-6xl w-full">
+            {testimonials.map((testimonial, index) => (
+              <div 
+                key={index}
+                className="glass-card p-4 md:p-6 rounded-2xl hover:scale-105 transition-all duration-300 animate-fade-in-up max-w-sm mx-auto md:max-w-none"
+                style={{ animationDelay: `${index * 0.2}s` }}
+              >
+                {/* Video Testimonial */}
+                 <div className="mb-4">
+                   <div className="relative w-full bg-gray-900 rounded-lg overflow-hidden" style={{ aspectRatio: '9/16', minHeight: '400px' }}>
+                     <iframe 
+                       src={`https://www.youtube.com/embed/${testimonial.videoUrl.split('/').pop()}?rel=0&modestbranding=1&showinfo=0`}
+                       className="w-full h-full"
+                       frameBorder="0"
+                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                       allowFullScreen
+                       title={`Depoimento de ${testimonial.name}`}
+                     />
+                   </div>
+                 </div>
 
-              {/* Testimonial Content */}
-              <blockquote className="text-foreground-secondary mb-6 leading-relaxed">
-                "{testimonial.content}"
-              </blockquote>
-
-              {/* Author Info */}
-              <div className="flex items-center">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-accent to-tech-glow flex items-center justify-center mr-4">
-                  <span className="text-background font-bold text-lg">
-                    {testimonial.name.charAt(0)}
-                  </span>
-                </div>
-                <div>
-                  <div className="font-semibold text-foreground">
-                    {testimonial.name}
+                {/* Author Info with Stars */}
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center">
+                    <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-br from-accent to-tech-glow flex items-center justify-center mr-3">
+                      <span className="text-background font-bold text-sm md:text-lg">
+                        {testimonial.name.charAt(0)}
+                      </span>
+                    </div>
+                    <div>
+                      <div className="font-semibold text-foreground text-sm md:text-base">
+                        {testimonial.name}
+                      </div>
+                      <div className="text-xs md:text-sm text-foreground-secondary">
+                        {testimonial.role}
+                      </div>
+                    </div>
                   </div>
-                  <div className="text-sm text-foreground-secondary">
-                    {testimonial.role}
+                  
+                  {/* Rating Stars */}
+                  <div className="flex">
+                    {[...Array(testimonial.rating)].map((_, i) => (
+                      <Star key={i} className="w-4 h-4 md:w-5 md:h-5 text-accent fill-accent" />
+                    ))}
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
 
         {/* Trust Indicators */}

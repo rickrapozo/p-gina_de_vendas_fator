@@ -7,7 +7,7 @@ interface FinalCTASectionProps {
   availableSpots?: number;
 }
 
-export const FinalCTASection = ({ availableSpots = 42 }: FinalCTASectionProps) => {
+export const FinalCTASection = ({ availableSpots = 52 }: FinalCTASectionProps) => {
   return (
     <section className="py-20 bg-background-alt relative overflow-hidden">
       {/* Grid Pattern */}
@@ -38,10 +38,10 @@ export const FinalCTASection = ({ availableSpots = 42 }: FinalCTASectionProps) =
                   <h3 className="text-2xl font-bold">Caminho da Matrix</h3>
                 </div>
                 <ul className="space-y-3 text-foreground-secondary">
-                  <li>✗ Continuar na mesma roda de hamster</li>
-                  <li>✗ Esperar que "um dia" as coisas melhorem</li>
-                  <li>✗ Culpar circunstâncias externas</li>
-                  <li>✗ Viver com aquele "E se..." pra sempre</li>
+                  <li><span className="text-red-500">✗</span> Continuar na mesma roda de hamster</li>
+                  <li><span className="text-red-500">✗</span> Esperar que "um dia" as coisas melhorem</li>
+                  <li><span className="text-red-500">✗</span> Culpar circunstâncias externas</li>
+                  <li><span className="text-red-500">✗</span> Viver com aquele "E se..." pra sempre</li>
                 </ul>
               </div>
             </GlassCard>
@@ -55,10 +55,10 @@ export const FinalCTASection = ({ availableSpots = 42 }: FinalCTASectionProps) =
                 <h3 className="text-2xl font-bold">Caminho do Arquiteto</h3>
               </div>
               <ul className="space-y-3 text-foreground">
-                <li>✓ Reprogramar seu sistema operacional mental</li>
-                <li>✓ Tomar controle do seu subconsciente</li>
-                <li>✓ Construir prosperidade de dentro pra fora</li>
-                <li>✓ Finalmente realizar seu potencial real</li>
+                <li><span className="text-green-500">✓</span> Reprogramar seu sistema operacional mental</li>
+                <li><span className="text-green-500">✓</span> Tomar controle do seu subconsciente</li>
+                <li><span className="text-green-500">✓</span> Construir prosperidade de dentro pra fora</li>
+                <li><span className="text-green-500">✓</span> Finalmente realizar seu potencial real</li>
               </ul>
             </GlassCard>
           </div>
