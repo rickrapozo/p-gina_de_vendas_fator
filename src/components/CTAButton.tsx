@@ -9,6 +9,16 @@ interface CTAButtonProps {
 }
 
 export const CTAButton = ({ children, size = "lg", className = "", onClick }: CTAButtonProps) => {
+  const handleClick = () => {
+    if (onClick) {
+      onClick();
+    } else {
+      // Redireciona para a seção de valor (pricing)
+      document.getElementById('pricing')?.scrollIntoView({
+        behavior: 'smooth'
+      });
+    }
+  };
   const sizeClasses = {
     default: "text-xs sm:text-sm px-2 py-6 sm:px-3 sm:py-6",
     lg: "text-xs sm:text-sm px-3 py-4 sm:px-4 sm:py-5",
@@ -18,7 +28,7 @@ export const CTAButton = ({ children, size = "lg", className = "", onClick }: CT
   return (
     <div className="flex justify-center w-full px-2 sm:px-4">
       <Button
-        onClick={onClick}
+        onClick={handleClick}
         className={`
           bg-accent hover:bg-accent/90 text-accent-foreground font-bold
           rounded-xl transition-all duration-300

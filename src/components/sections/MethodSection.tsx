@@ -46,7 +46,7 @@ const fivePs = [
 
 export const MethodSection = () => {
   return (
-    <section className="py-20 bg-background relative overflow-hidden">
+    <section className="py-12 md:py-20 bg-background relative overflow-hidden">
       {/* Radial Gradient Background */}
       <div className="absolute inset-0 opacity-30">
         <div className="absolute inset-0 bg-gradient-radial from-accent/10 via-transparent to-transparent" />
@@ -55,23 +55,23 @@ export const MethodSection = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-6xl mx-auto">
           {/* Section Header */}
-          <div className="text-center mb-20 animate-fade-in">
+          <div className="text-center mb-12 md:mb-20 animate-fade-in">
             <div className="inline-block mb-4">
-              <span className="text-accent text-sm font-bold tracking-widest uppercase">
+              <span className="text-accent text-xs md:text-sm font-bold tracking-widest uppercase">
                 A Solução Científica
               </span>
             </div>
-            <h2 className="text-4xl md:text-6xl font-extrabold mb-6">
+            <h2 className="text-3xl md:text-4xl lg:text-6xl font-extrabold mb-4 md:mb-6">
               O Método <span className="text-gradient-accent">5Ps</span>
             </h2>
-            <p className="text-xl text-foreground-secondary max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg md:text-xl text-foreground-secondary max-w-3xl mx-auto leading-relaxed">
               Não é teoria. Não é motivação. É um <span className="text-accent font-semibold">protocolo sistemático</span> de 
               reprogramação neural baseado em neurociência aplicada.
             </p>
           </div>
 
           {/* 5Ps Cards */}
-          <div className="space-y-6">
+          <div className="space-y-4 md:space-y-6">
             {fivePs.map((p, index) => (
               <GlassCard
                 key={index}
@@ -79,15 +79,15 @@ export const MethodSection = () => {
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 {/* Large Number Background */}
-                <div className="absolute top-0 right-0 text-9xl font-black opacity-5 select-none">
+                <div className="absolute top-0 right-0 text-6xl md:text-9xl font-black opacity-5 select-none">
                   {p.number}
                 </div>
 
-                <div className="flex flex-col md:flex-row items-start md:items-center gap-6 relative z-10">
+                <div className="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-6 relative z-10">
                   {/* Icon */}
                   <div className="flex-shrink-0">
-                    <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-accent/20 to-tech-glow/20 flex items-center justify-center glow-accent">
-                      <p.icon className={`w-10 h-10 ${p.color}`} />
+                    <div className="w-16 h-16 md:w-20 md:h-20 rounded-xl md:rounded-2xl bg-gradient-to-br from-accent/20 to-tech-glow/20 flex items-center justify-center glow-accent">
+                      <p.icon className={`w-8 h-8 md:w-10 md:h-10 ${p.color}`} />
                     </div>
                   </div>
 
@@ -98,13 +98,13 @@ export const MethodSection = () => {
                         {p.number}
                       </span>
                     </div>
-                    <h3 className="text-2xl md:text-3xl font-extrabold mb-1">
+                    <h3 className="text-xl md:text-2xl lg:text-3xl font-extrabold mb-1">
                       {p.title}
                     </h3>
-                    <p className="text-accent font-semibold text-lg mb-3">
+                    <p className="text-accent font-semibold text-base md:text-lg mb-3">
                       {p.subtitle}
                     </p>
-                    <p className="text-foreground-secondary leading-relaxed">
+                    <p className="text-sm md:text-base text-foreground-secondary leading-relaxed">
                       {p.description}
                     </p>
                   </div>
@@ -114,12 +114,12 @@ export const MethodSection = () => {
           </div>
 
           {/* Bottom CTA */}
-          <div className="mt-16 text-center">
+          <div className="mt-12 md:mt-16 text-center">
             <GlassCard className="max-w-3xl mx-auto border-2 border-accent/30 bg-gradient-to-br from-accent/5 to-transparent">
-              <p className="text-xl md:text-2xl font-bold">
+              <p className="text-lg md:text-xl lg:text-2xl font-bold">
                 Cada <span className="text-accent">P</span> é uma camada de transformação.
               </p>
-              <p className="text-lg text-foreground-secondary mt-4">
+              <p className="text-base md:text-lg text-foreground-secondary mt-4">
                 Juntos, eles formam o sistema completo de reprogramação mental que você precisa.
               </p>
             </GlassCard>

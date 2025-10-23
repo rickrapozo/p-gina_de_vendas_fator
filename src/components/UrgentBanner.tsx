@@ -44,12 +44,12 @@ export const UrgentBanner = ({ message, className = '' }: UrgentBannerProps) => 
   }, [message]);
 
   return (
-    <div className={`bg-red-600 text-white py-3 overflow-hidden relative ${className}`}>
+    <div className={`bg-red-600 text-white py-2 md:py-3 overflow-hidden relative w-full ${className}`}>
       <div className="absolute inset-0 bg-gradient-to-r from-red-600 via-red-500 to-red-600" />
-      <div className="relative z-10">
+      <div className="relative z-10 px-2 md:px-4">
         <div 
           ref={scrollRef}
-          className="whitespace-nowrap text-sm md:text-base font-bold tracking-wide uppercase"
+          className="whitespace-nowrap text-xs sm:text-sm md:text-base font-bold tracking-wide uppercase"
           style={{ 
             textShadow: '1px 1px 2px rgba(0,0,0,0.5)',
             willChange: 'transform'
