@@ -66,6 +66,9 @@ export const PricingSection = ({ availableSpots = 52 }: PricingSectionProps) => 
                   <p className="text-xs md:text-sm text-muted-foreground mt-2 px-2">
                     (Preço promocional - Apenas 100 vagas)
                   </p>
+                  <p className="text-xs md:text-sm text-muted-foreground mt-1 px-2">
+                    Esse valor é cobrado à vista no plano anual.
+                  </p>
                 </div>
 
                 {/* Benefits List */}
@@ -85,12 +88,11 @@ export const PricingSection = ({ availableSpots = 52 }: PricingSectionProps) => 
                   <CTAButton 
                     size="xl" 
                     className="w-full text-sm md:text-base"
-                    onClick={() => window.open('https://pay.cakto.com.br/kkkvq8u', '_blank')}
                   >
-                    QUERO MINHA VAGA DE FUNDADOR
+                    CRIAR MINHA CONTA AGORA
                   </CTAButton>
                   <p className="text-xs md:text-sm text-muted-foreground">
-                    🔒 Pagamento seguro • Cancele quando quiser
+                    Crie sua conta para escolher o plano ideal.
                   </p>
                 </div>
               </div>

@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { SIGNUP_URL } from "@/lib/utils";
 
 interface CTAButtonProps {
   children: React.ReactNode;
@@ -13,10 +14,8 @@ export const CTAButton = ({ children, size = "lg", className = "", onClick }: CT
     if (onClick) {
       onClick();
     } else {
-      // Redireciona para a seção de valor (pricing)
-      document.getElementById('pricing')?.scrollIntoView({
-        behavior: 'smooth'
-      });
+      // Novo fluxo: redirecionar usuário para criação de conta
+      window.location.href = SIGNUP_URL;
     }
   };
   const sizeClasses = {

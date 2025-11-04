@@ -44,7 +44,7 @@ export const HeroSection = () => {
           {/* Primary CTA */}
           <div className="pt-6 md:pt-8 flex justify-center px-4">
             <CTAButton size="xl">
-              QUERO ACESSAR AGORA
+              CRIAR MINHA CONTA AGORA
             </CTAButton>
           </div>
           <div className="text-center px-4">

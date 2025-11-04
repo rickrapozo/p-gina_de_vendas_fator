@@ -78,11 +78,11 @@ export const FinalCTASection = ({ availableSpots = 52 }: FinalCTASectionProps) =
           {/* Final CTA */}
           <div className="text-center space-y-6 md:space-y-8 animate-fade-in flex flex-col items-center px-4" style={{ animationDelay: '0.4s' }}>
             <CTAButton size="xl" className="text-sm md:text-base">
-              EU ESCOLHO ME JUNTAR. QUERO MINHA VAGA.
+              CRIAR MINHA CONTA AGORA
             </CTAButton>
 
             <p className="text-xs md:text-sm text-muted-foreground">
-              💳 Parcelamento disponível • 🔒 Pagamento 100% seguro • ✓ Garantia de 15 dias
+              Crie sua conta para escolher seu plano de acesso.
             </p>
           </div>
 
