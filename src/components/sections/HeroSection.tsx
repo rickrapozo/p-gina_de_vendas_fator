@@ -1,11 +1,25 @@
 import { CTAButton } from "@/components/CTAButton";
 import { Play } from "lucide-react";
+import { useEffect } from "react";
 export const HeroSection = () => {
   const scrollToPricing = () => {
     document.getElementById('pricing')?.scrollIntoView({
       behavior: 'smooth'
     });
   };
+  
+  // Load VTurb Smartplayer script
+  useEffect(() => {
+    const s = document.createElement("script");
+    s.src = "https://scripts.converteai.net/3a4c9f1d-4afd-446b-87df-88d14c4a65b3/players/690c2f480c5deaa41556f10f/v4/player.js";
+    s.async = true;
+    document.head.appendChild(s);
+
+    return () => {
+      // Optional cleanup if component unmounts
+      if (s.parentNode) s.parentNode.removeChild(s);
+    };
+  }, []);
   return <section className="relative min-h-screen flex items-center justify-center overflow-hidden grid-pattern">
       {/* Background Gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-background-alt to-background opacity-90" />
@@ -30,14 +44,11 @@ export const HeroSection = () => {
           {/* VSL Player */}
           <div className="max-w-4xl mx-auto my-8 md:my-12 px-2">
             <div className="relative aspect-video rounded-xl md:rounded-2xl overflow-hidden glass-card group cursor-pointer shadow-2xl hover:shadow-accent/20 transition-all duration-300">
-              {/* Video Embed */}
-              <iframe 
-                src="https://drive.google.com/file/d/1lLuNk2EuDyVFwc2iKLJ9_iMn4slFjprJ/preview" 
-                className="w-full h-full"
-                allow="autoplay"
-                allowFullScreen
-                title="VSL - Fator Essencial"
-              />
+              {/* VTurb Smartplayer Embed */}
+              <vturb-smartplayer
+                id="vid-690c2f480c5deaa41556f10f"
+                style={{ display: 'block', margin: '0 auto', width: '100%' }}
+              ></vturb-smartplayer>
             </div>
           </div>
 
