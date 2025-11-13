@@ -65,6 +65,46 @@
       })(window, document, "clarity", "script", "tuw10g4efs"); 
     </script>
 
+    <!-- TikTok Pixel Code Start -->
+    <script>
+      !function(w, d, t) {
+        w.TiktokAnalyticsObject = t;
+        var ttq = w[t] = w[t] || [];
+        ttq.methods = [
+          "page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"
+        ];
+        ttq.setAndDefer = function(ttq, e) {
+          ttq[e] = function() { ttq.push([e].concat(Array.prototype.slice.call(arguments, 0))) }
+        };
+        for (var i = 0; i < ttq.methods.length; i++) ttq.setAndDefer(ttq, ttq.methods[i]);
+        ttq.instance = function(id) {
+          var e = ttq._i[id] || [];
+          for (var n = 0; n < ttq.methods.length; n++) ttq.setAndDefer(e, ttq.methods[n]);
+          return e;
+        };
+        ttq.load = function(pixelId, opts) {
+          var r = "https://analytics.tiktok.com/i18n/pixel/events.js";
+          var o = opts && opts.partner;
+          ttq._i = ttq._i || {};
+          ttq._i[pixelId] = [];
+          ttq._i[pixelId]._u = r;
+          ttq._t = ttq._t || {};
+          ttq._t[pixelId] = +new Date;
+          ttq._o = ttq._o || {};
+          ttq._o[pixelId] = opts || {};
+          var n = d.createElement("script");
+          n.type = "text/javascript";
+          n.async = true;
+          n.src = r + "?sdkid=" + pixelId + "&lib=" + t;
+          var e = d.getElementsByTagName("script")[0];
+          e.parentNode.insertBefore(n, e);
+        };
+        ttq.load('D4B0D0JC77UF4SPAH80G');
+        ttq.page();
+      }(window, document, 'ttq');
+    </script>
+    <!-- TikTok Pixel Code End -->
+
     <!-- VTurb / ConverteAI performance timing and preloads -->
     <script>!function(i,n){i._plt=i._plt||(n&&n.timeOrigin?n.timeOrigin+n.now():Date.now())}(window,performance);</script>
     <link rel="preload" href="https://scripts.converteai.net/3a4c9f1d-4afd-446b-87df-88d14c4a65b3/players/690c2f480c5deaa41556f10f/v4/player.js" as="script">
